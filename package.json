@@ -1,0 +1,27 @@
+{
+  "name": "brians_portfolio",
+  "version": "1.0.0",
+  "description": "portfolio site to showcase some projects I have built",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirBuitrago/TechDegree-Project6-Static-Node-Express-Site.git"
+  },
+  "author": "brian buitrago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirBuitrago/TechDegree-Project6-Static-Node-Express-Site/issues"
+  },
+  "homepage": "https://github.com/SirBuitrago/TechDegree-Project6-Static-Node-Express-Site#readme",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "node": "^15.12.0",
+    "nodemon": "^2.0.7",
+    "pug": "^3.0.2"
+  }
+}
