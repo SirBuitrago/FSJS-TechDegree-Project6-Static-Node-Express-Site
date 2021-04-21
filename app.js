@@ -6,11 +6,12 @@ FSJS project 6 - Static Node and Express Site
 //Thank you for taking a look at my code. I am going for the "Exceeds Expectations" grade. If my code is not on par with that grade, then please reject this project for resubmission.
 
 // =====================================
-//    ROUTES AND ENDPOINTS
+//    MODULES, ROUTES AND ENDPOINTS
 // =====================================
 
+// Required Modules
 const express = require('express');
-//const data = require('./data');
+const data = require('./data');
 
 // Init Express
 const app = express();
@@ -18,11 +19,12 @@ const app = express();
 // Variable for Port
 const PORT = process.env.PORT || 3000;
 
-// Create endpoints/route handlers
+// App config
 app.set('view engine', 'pug');
 
 app.use('static', express.static('public'));
 
+// Defining Routes
 app.get('/', (req, res) => {
 	res.render('index', { data: data.projects });
 });
@@ -31,7 +33,17 @@ app.get('./about', (req, res) => {
 	res.render('about');
 });
 
-// Listen on port 3000 of local machine
+// Error Page Handlers
+app.get('/project/:id', (req, res, next) => {
+	if (parseInt(req.params.id) > data.projects.length - 1) {
+		const err = new Error('Invalid URL...');
+		err.status = 404;
+		return next(err);
+	}
+	res.render('project', { id: parseInt(req.params.id), data: data.projects });
+});
+
+// Active Server: Listen on port 3000 of local machine
 app.listen(PORT, () => {
 	console.log('The application is running on locahost:3000!');
 });
