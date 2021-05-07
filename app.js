@@ -12,6 +12,8 @@ FSJS project 6 - Static Node and Express Site
 // Required Modules
 const express = require('express');
 const data = require('./data');
+const router = express.Router();
+// const { projects } = require('../data/data.json');
 
 // Init Express
 const app = express();
