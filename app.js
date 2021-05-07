@@ -45,6 +45,19 @@ app.get('/project/:id', (req, res, next) => {
 	res.render('project', { id: parseInt(req.params.id), data: data.projects });
 });
 
+app.use((req, res, next) => {
+	const err = new Error('Oh no! An error occured...');
+	err.status = 404;
+	next(err);
+});
+
+app.use((err, req, res, next) => {
+	res.locals.error = err;
+	res.statsu(err.status);
+	console.log(err);
+	res.render('error');
+});
+
 // Active Server: Listen on port 3000 of local machine
 app.listen(PORT, () => {
 	console.log('The application is running on locahost:3000!');
