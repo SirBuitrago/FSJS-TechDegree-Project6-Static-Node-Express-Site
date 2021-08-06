@@ -12,19 +12,19 @@ FSJS project 6 - Static Node and Express Site
 // Required Modules
 const express = require('express');
 const data = require('./data');
-const router = express.Router();
+
 // const { projects } = require('../data/data.json');
 
 // Init Express
 const app = express();
 
 // Variable for Port
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // App config
 app.set('view engine', 'pug');
 
-app.use('static', express.static('public'));
+app.use('/static', express.static('public'));
 
 // Defining Routes
 app.get('/', (req, res) => {
@@ -53,12 +53,12 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
 	res.locals.error = err;
-	res.statsu(err.status);
+	res.stats(err.status);
 	console.log(err);
 	res.render('error');
 });
 
 // Active Server: Listen on port 3000 of local machine
 app.listen(PORT, () => {
-	console.log('The application is running on locahost:3000!');
+	console.log('The application is running on localhost:5000!');
 });
